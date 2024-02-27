@@ -133,6 +133,14 @@ public abstract class HumanBeing implements Sittable, Eatable {
         }
     }
 
+    public static void laugthEnough(String who) {
+        System.out.print(who + " мог нахохотаться");
+    }
+
+    public static void sight(String object) {
+        System.out.println("глядя на " + object);
+    }
+
     @Override
     public void sit(Furniture furniture) {
         System.out.println("Он " + "сел/сидит за " + furniture.getFurniture());

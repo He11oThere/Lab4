@@ -3,6 +3,7 @@ package actor;
 import additionalElements.Food;
 import additionalElements.Furniture;
 import enums.EmotionalCondition;
+import enums.Position;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -129,9 +130,9 @@ public class ShortiesContainer {
         }
     }
 
-    public void allCrawl(Object o) {
+    public void allCrawlUp(Object o) {
         if (shortiesList.size() > 1) {
-            System.out.println(getWhoIn() + " карабкались по " + o);
+            System.out.print(getWhoIn() + " карабкались " + Position.UP + " по " + o);
         } else {
             System.out.println("Недостаточно коротышек");
         }

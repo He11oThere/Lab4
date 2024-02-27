@@ -1,16 +1,11 @@
-import actor.Actor;
-import actor.ShortiesContainer;
-import actor.Shorty;
-import additionalElements.Food;
-import additionalElements.Furniture;
-import additionalElements.StreetObject;
-import enums.EmotionalCondition;
-import enums.HungerState;
-import enums.TimePoint;
+import actor.*;
+import additionalElements.*;
+import enums.*;
+import interfaces.*;
 
 public class Main {
     public static void main(String[] args) {
-        ShortiesContainer container = new ShortiesContainer("коротышки", "приветливые лица");
+        ShortiesContainer container = new ShortiesContainer("Коротышки", "приветливые лица");
         Actor neznaika = new Actor("Незнайка", EmotionalCondition.CALM, HungerState.NEUTRAL);
         container.createShorty();
         container.createShorty(); // добавление двух коротышек в контейнер
@@ -33,11 +28,35 @@ public class Main {
         StreetObject specialBicycle = new StreetObject("специальном велосипеде");
         StreetObject carousels = new StreetObject("карусели");
         StreetObject wheel = new StreetObject("чертовом колесе");
+        StreetObject mirrors = new StreetObject("кривые зеркала");
 
-        container.allCrawl(stairs);
+        Swingable toSwingOn = (StreetObject swingObj) -> "покачаться на " + swingObj;
+        Shakeable toShakeOn = (StreetObject shakeObj) -> "потрястись на " + shakeObj;
+        Rideable toRideOn = (StreetObject rideObj) -> "прокатиться на " + rideObj;
+        Spinable toSpinAroundOn = (StreetObject spinObj, StreetObject spinObjExtra) -> "покружиться на " + spinObj + ", или хотя бы на " + spinObjExtra;
+
+
+        container.allCrawlUp(stairs);
+        System.out.print(", чтобы ");
+//        Swingable toSwingOn = (StreetObject swingObj) -> "покачаться на " + swingObj;
+        System.out.print(toSwingOn.swingOn(swing) + ", ");
+//        Shakeable toShakeOn = (StreetObject shakeObj) -> "потрястись на " + shakeObj;
+        System.out.println(toShakeOn.shakeOn(woodenHorses) + ",");
+//        Rideable toRideOn = (StreetObject rideObj) -> "прокатиться на " + rideObj;
+        System.out.print(toRideOn.rideOn(specialBicycle) + ", ");
+//        Spinable toSpinAroundOn = (StreetObject spinObj, StreetObject spinObjExtra) -> "покружиться на " + spinObj + ", или хотя бы на " + spinObjExtra;
+        System.out.println(toSpinAroundOn.spinAroundOn(carousels, wheel));
+        mirrors.located(Position.DOWN);
+        System.out.print(", и ");
+        HumanBeing.laugthEnough("каждый");
+        System.out.print(", "); HumanBeing.sight("отражение перекошенной физиономии");
+
+        System.out.println(Position.RIGHT_HERE + " " + Position.IN_FRONT_OF);
+
 
         // ниже - старый код
 
+        System.out.println("");
         neznaika.see(null);
         container.allEat(dinner, " ели ");
         neznaika.remember();
@@ -69,7 +88,6 @@ public class Main {
         neznaika.evaluate(" понравилась", " еда");
 //        System.out.print(neznaika.getName() + " " + neznaika.getHungerState()); // заменил на один метод
         neznaika.printHungerState();
-//         System.out.print(neznaika.getHungerState());
 //         neznaika.hungerLevel(HungerState.FULL);  // исправил реализацию и добавил в метод
         System.out.print(", поэтому ");
         neznaika.emotion(EmotionalCondition.HAPPY);

@@ -1,5 +1,7 @@
 package additionalElements;
 
+import enums.Position;
+
 import java.util.Objects;
 
 public class StreetObject {
@@ -43,6 +45,10 @@ public class StreetObject {
 
     public void setMany(boolean many) {
         isMany = many;
+    }
+
+    public void located(Position position) {
+        System.out.print(position + " были выставлены " + getName());
     }
 
     @Override

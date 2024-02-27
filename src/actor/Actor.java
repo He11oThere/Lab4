@@ -2,15 +2,17 @@ package actor;
 
 import additionalElements.Food;
 import additionalElements.Furniture;
+import additionalElements.StreetObject;
 import enums.EmotionalCondition;
 import enums.HungerState;
 import interfaces.Eatable;
 import interfaces.Sittable;
+import interfaces.Swingable;
 
 import java.util.Objects;
 import java.util.Random;
 
-public class Actor extends HumanBeing{
+public class Actor extends HumanBeing {
 
     public Actor() {
     }
