@@ -3,6 +3,7 @@ import actor.ShortiesContainer;
 import actor.Shorty;
 import additionalElements.Food;
 import additionalElements.Furniture;
+import additionalElements.StreetObject;
 import enums.EmotionalCondition;
 import enums.HungerState;
 import enums.TimePoint;
@@ -13,7 +14,7 @@ public class Main {
         Actor neznaika = new Actor("Незнайка", EmotionalCondition.CALM, HungerState.NEUTRAL);
         container.createShorty();
         container.createShorty(); // добавление двух коротышек в контейнер
-        Shorty darkShorty = new Shorty("коротышка", "черненький");
+//        Shorty darkShorty = new Shorty("коротышка", "черненький"); // заменил на официанта ниже (один и тот же персонаж)
         Shorty waiter = new Shorty("Официант", "в черном костюме");
         Furniture table = new Furniture("стол");
 
@@ -23,6 +24,19 @@ public class Main {
         Food coffee = new Food("чашечка кофе", 1);
         Food iceCream = new Food("Клубничным мороженным", 1);
         Food dinner = new Food("ужин", 1);
+
+        // выше - старый код
+
+        StreetObject stairs = new StreetObject("лестницам", true);
+        StreetObject swing = new StreetObject("качелях", true);
+        StreetObject woodenHorses = new StreetObject("заводных деревянных лошадках", true);
+        StreetObject specialBicycle = new StreetObject("специальном велосипеде");
+        StreetObject carousels = new StreetObject("карусели");
+        StreetObject wheel = new StreetObject("чертовом колесе");
+
+        container.allCrawl(stairs);
+
+        // ниже - старый код
 
         neznaika.see(null);
         container.allEat(dinner, " ели ");

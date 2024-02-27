@@ -129,6 +129,15 @@ public class ShortiesContainer {
         }
     }
 
+    public void allCrawl(Object o) {
+        if (shortiesList.size() > 1) {
+            System.out.println(getWhoIn() + " карабкались по " + o);
+        } else {
+            System.out.println("Недостаточно коротышек");
+        }
+    }
+
+
     @Override
     public String toString() {
         return "ShortiesContainer{" +

@@ -69,6 +69,10 @@ public class Shorty extends Actor implements Eatable, Sittable {
         System.out.print(emotion + " поглядывали на " + person.getName());
     }
 
+//    public void crawl(Object o) {
+//        System.out.println(getName() + " карабкались по " + o);
+//    }
+
     @Override
     public String toString() {
         return super.toString();
