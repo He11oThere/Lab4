@@ -4,13 +4,35 @@ import java.util.Objects;
 
 public class Furniture {
     private final String furniture;
+    private boolean isMany = false;
 
     public Furniture(String furniture) {
         this.furniture = furniture;
     }
 
+    public Furniture(String furniture, boolean isMany) {
+        this.furniture = furniture;
+        this.isMany = isMany;
+    }
+
     public String getFurniture() {
         return furniture;
+    }
+
+    public void stood() {
+        if (isMany) {
+            System.out.println("стояли " + getFurniture());
+        } else {
+            System.out.println("стоял " + getFurniture());
+        }
+    }
+
+    public boolean isMany() {
+        return isMany;
+    }
+
+    public void setMany(boolean many) {
+        isMany = many;
     }
 
     @Override

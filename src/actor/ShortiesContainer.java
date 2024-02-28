@@ -128,7 +128,7 @@ public class ShortiesContainer {
         } else {
             System.out.println("Недостаточно коротышек");
         }
-    }
+    } // сделать проверку на "многие"
 
     public void allCrawlUp(Object o) {
         if (shortiesList.size() > 1) {
@@ -137,7 +137,6 @@ public class ShortiesContainer {
             System.out.println("Недостаточно коротышек");
         }
     }
-
 
     @Override
     public String toString() {

@@ -5,10 +5,10 @@ import interfaces.*;
 
 public class Main {
     public static void main(String[] args) {
-        ShortiesContainer container = new ShortiesContainer("Коротышки", "приветливые лица");
+        ShortiesContainer shortiesContainer = new ShortiesContainer("Коротышки", "приветливые лица");
         Actor neznaika = new Actor("Незнайка", EmotionalCondition.CALM, HungerState.NEUTRAL);
-        container.createShorty();
-        container.createShorty(); // добавление двух коротышек в контейнер
+        shortiesContainer.createShorty();
+        shortiesContainer.createShorty(); // добавление двух коротышек в контейнер
 //        Shorty darkShorty = new Shorty("коротышка", "черненький"); // заменил на официанта ниже (один и тот же персонаж)
         Shorty waiter = new Shorty("Официант", "в черном костюме");
         Furniture table = new Furniture("стол");
@@ -21,6 +21,9 @@ public class Main {
         Food dinner = new Food("ужин", 1);
 
         // выше - старый код
+        Furniture tables = new Furniture("столики", true);
+        Building dinnery = new Building("столовыми", true);
+        Building caffes = new Building("кафе", true);
 
         StreetObject stairs = new StreetObject("лестницам", true);
         StreetObject swing = new StreetObject("качелях", true);
@@ -28,7 +31,7 @@ public class Main {
         StreetObject specialBicycle = new StreetObject("специальном велосипеде");
         StreetObject carousels = new StreetObject("карусели");
         StreetObject wheel = new StreetObject("чертовом колесе");
-        StreetObject mirrors = new StreetObject("кривые зеркала");
+        StreetObject mirrors = new StreetObject("кривые зеркала", true);
 
         Swingable toSwingOn = (StreetObject swingObj) -> "покачаться на " + swingObj;
         Shakeable toShakeOn = (StreetObject shakeObj) -> "потрястись на " + shakeObj;
@@ -36,7 +39,7 @@ public class Main {
         Spinable toSpinAroundOn = (StreetObject spinObj, StreetObject spinObjExtra) -> "покружиться на " + spinObj + ", или хотя бы на " + spinObjExtra;
 
 
-        container.allCrawlUp(stairs);
+        shortiesContainer.allCrawlUp(stairs);
         System.out.print(", чтобы ");
 //        Swingable toSwingOn = (StreetObject swingObj) -> "покачаться на " + swingObj;
         System.out.print(toSwingOn.swingOn(swing) + ", ");
@@ -51,14 +54,21 @@ public class Main {
         HumanBeing.laugthEnough("каждый");
         System.out.print(", "); HumanBeing.sight("отражение перекошенной физиономии");
 
-        System.out.println(Position.RIGHT_HERE + " " + Position.IN_FRONT_OF);
+        System.out.print(Position.RIGHT_HERE + " " + Position.IN_FRONT_OF + " ");
+        Building.uncountable(dinnery, caffes);
+        System.out.print(", ");
+        System.out.print(Position.RIGHT_ON + " тротуаре, ");
+        tables.stood();
+        System.out.print(shortiesContainer.getWhoIn());
+        shortiesContainer.allSit(tables);
+        System.out.print(" и ");
 
 
         // ниже - старый код
 
         System.out.println("");
         neznaika.see(null);
-        container.allEat(dinner, " ели ");
+        shortiesContainer.allEat(dinner, " ели ");
         neznaika.remember();
         System.out.print(TimePoint.LONG_AGO.getPoint());
         neznaika.hungerLevel(HungerState.HUNGRY);
@@ -105,13 +115,13 @@ public class Main {
         System.out.print(" и ");
         neznaika.lookAt("танцующих");
         System.out.print(", и ");
-        neznaika.lookAt(container.getWhoIn());
+        neznaika.lookAt(shortiesContainer.getWhoIn());
         System.out.print(", которые");
-        container.allSit(table);
-        container.allTalk("между собой");
+        shortiesContainer.allSit(table);
+        shortiesContainer.allTalk("между собой");
         System.out.print(" и");
-        container.allLaugth();
-        container.allAppearanceDescription();
+        shortiesContainer.allLaugth();
+        shortiesContainer.allAppearanceDescription();
         waiter.setName("коротышка");
         waiter.setAppearance("черненький");
         System.out.print(waiter.getAppearance() + " ");
