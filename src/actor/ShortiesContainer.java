@@ -143,15 +143,13 @@ public class ShortiesContainer {
             if (food.length == 1) {
                 System.out.print(getWhoIn() + " пили " + food[0]);
             } else {
-                System.out.print(getWhoIn() + " пили " );
-                for (int x = 0; x <= food.length; x++) {
-                    if (x < food.length) {
-                        if (x == food.length - 1) {
-                            System.out.print(food[x]);
-                        }
-                        System.out.print(food[x] + ", ");
-                    } else {
-                        System.out.print(" или " + food[x]);
+                System.out.print(getWhoIn() + " пили ");
+                for (int x = 0; x < food.length; x++) {
+                    System.out.print(food[x]);
+                    if (x < food.length - 2) {
+                        System.out.print(", ");
+                    } else if (x == food.length - 2) {
+                        System.out.print(" или ");
                     }
                 }
             }
@@ -159,6 +157,11 @@ public class ShortiesContainer {
             System.out.println("Недостаточно коротышек");
         }
     }
+
+    public String toDo(String action) {
+        return action;
+    }
+
 
     @Override
     public String toString() {
