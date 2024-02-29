@@ -138,6 +138,28 @@ public class ShortiesContainer {
         }
     }
 
+    public void allDrink(Food... food) {
+        if (shortiesList.size() > 1) {
+            if (food.length == 1) {
+                System.out.print(getWhoIn() + " пили " + food[0]);
+            } else {
+                System.out.print(getWhoIn() + " пили " );
+                for (int x = 0; x <= food.length; x++) {
+                    if (x < food.length) {
+                        if (x == food.length - 1) {
+                            System.out.print(food[x]);
+                        }
+                        System.out.print(food[x] + ", ");
+                    } else {
+                        System.out.print(" или " + food[x]);
+                    }
+                }
+            }
+        } else {
+            System.out.println("Недостаточно коротышек");
+        }
+    }
+
     @Override
     public String toString() {
         return "ShortiesContainer{" +
