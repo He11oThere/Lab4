@@ -19,11 +19,19 @@ public class Furniture {
         return furniture;
     }
 
-    public void stood() {
+    public void stood(String... onSmth) {
         if (isMany) {
-            System.out.println("стояли " + getFurniture());
+            if (onSmth.length == 0) {
+                System.out.println("стояли " + getFurniture());
+            } else {
+                System.out.println(onSmth[0] + ", " + "стояли " + getFurniture());
+            }
         } else {
-            System.out.println("стоял " + getFurniture());
+            if (onSmth.length == 0) {
+                System.out.println("стоял " + getFurniture());
+            } else {
+                System.out.println(onSmth[0] + ", " + "стоял " + getFurniture());
+            }
         }
     }
 
