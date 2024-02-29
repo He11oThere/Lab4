@@ -16,7 +16,7 @@ public class Main {
         Food soup = new Food("суп", 1);
         Food pasta = new Food(" макароны с сыром", 1);
         Food cabbageRolls = new Food("голубцы", 2);
-        Food coffee = new Food("чашечка кофе", 1);
+        Food cupOfCoffee = new Food("кофе", 1);
         Food iceCream = new Food("Клубничным мороженным", 1);
         Food dinner = new Food("ужин", 1);
 
@@ -24,6 +24,9 @@ public class Main {
         Furniture tables = new Furniture("столики", true);
         Building dinnery = new Building("столовыми", true);
         Building caffes = new Building("кафе", true);
+
+        Food tea = new Food("чай", 1);
+        Food waterWithSyrup = new Food("газированная вода с сиропом", 1);
 
         StreetObject stairs = new StreetObject("лестницам", true);
         StreetObject swing = new StreetObject("качелях", true);
@@ -57,18 +60,23 @@ public class Main {
         System.out.print(Position.RIGHT_HERE + " " + Position.IN_FRONT_OF + " ");
         Building.uncountable(dinnery, caffes);
         System.out.print(", ");
-        System.out.print(Position.RIGHT_ON + " тротуаре, ");
-        tables.stood();
+//        System.out.print(Position.RIGHT_ON + " тротуаре, "); // добавил в метод как varargs
+        tables.stood(Position.RIGHT_ON + " тротуаре");
         System.out.print(shortiesContainer.getWhoIn());
         shortiesContainer.allSit(tables);
         System.out.print(" и ");
-
+        shortiesContainer.allEat(dinner, " ели ");
+        System.out.print(", "); shortiesContainer.allDrink(tea, cupOfCoffee, waterWithSyrup);
+        System.out.print(", ");
+        shortiesContainer.allEat(iceCream, " ели ");
+        System.out.println("\nили " + shortiesContainer.toDo("просто закусывали"));
 
         // ниже - старый код
 
-        System.out.println("");
+        System.out.println("\n");
         neznaika.see(null);
         shortiesContainer.allEat(dinner, " ели ");
+        System.out.println("");
         neznaika.remember();
         System.out.print(TimePoint.LONG_AGO.getPoint());
         neznaika.hungerLevel(HungerState.HUNGRY);
@@ -91,7 +99,7 @@ public class Main {
         System.out.print(neznaika.getName());
         neznaika.eat(cabbageRolls, " cъел ");
         System.out.print(", ");
-        neznaika.drink(coffee);
+        neznaika.drink(cupOfCoffee);
         System.out.print(", ");
         neznaika.eat(iceCream, "закусил ");
         System.out.println("");
@@ -118,6 +126,7 @@ public class Main {
         neznaika.lookAt(shortiesContainer.getWhoIn());
         System.out.print(", которые");
         shortiesContainer.allSit(table);
+        System.out.println("");
         shortiesContainer.allTalk("между собой");
         System.out.print(" и");
         shortiesContainer.allLaugth();
