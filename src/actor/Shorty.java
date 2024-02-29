@@ -17,7 +17,7 @@ public class Shorty extends Actor implements Eatable, Sittable {
 
     @Override
     public void sit(Furniture furniture) {
-        System.out.println(" сидят за " + furniture.getFurniture());
+        System.out.print(" сидят за " + furniture.getFurniture());
     }
 
     @Override
@@ -26,7 +26,7 @@ public class Shorty extends Actor implements Eatable, Sittable {
     }
 
     public void eat(Food food, String action, String who) {
-        System.out.println(who + action + food.getFoodType());
+        System.out.print(who + action + food.getFoodType());
     }
 
     public void talk(String activeSpeakers) {
