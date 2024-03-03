@@ -5,6 +5,7 @@ import additionalElements.Furniture;
 import enums.EmotionalCondition;
 import enums.HungerState;
 import interfaces.Eatable;
+import interfaces.Music;
 import interfaces.Sittable;
 
 import java.util.Objects;
@@ -139,6 +140,10 @@ public abstract class HumanBeing implements Sittable, Eatable {
 
     public static void sight(String object) {
         System.out.println("глядя на " + object);
+    }
+
+    public static void dance(String actor, String position) {
+        System.out.println(actor + " " + position + " танцевали");
     }
 
     @Override
