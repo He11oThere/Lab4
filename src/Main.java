@@ -17,7 +17,7 @@ public class Main {
         Food pasta = new Food(" макароны с сыром", 1);
         Food cabbageRolls = new Food("голубцы", 2);
         Food cupOfCoffee = new Food("кофе", 1);
-        Food iceCream = new Food("Клубничным мороженным", 1);
+        Food strawberryIceCream = new Food("Клубничным мороженным", 1);
         Food dinner = new Food("ужин", 1);
 
         // выше - старый код
@@ -27,6 +27,7 @@ public class Main {
 
         Food tea = new Food("чай", 1);
         Food waterWithSyrup = new Food("газированная вода с сиропом", 1);
+        Food iceCream = new Food("мороженное", 1);
 
         StreetObject stairs = new StreetObject("лестницам", true);
         StreetObject swing = new StreetObject("качелях", true);
@@ -70,6 +71,10 @@ public class Main {
         System.out.print(", ");
         shortiesContainer.allEat(iceCream, " ели ");
         System.out.println("\nили " + shortiesContainer.toDo("просто закусывали"));
+        Sound.playing.roar("со всех сторон");
+        System.out.print(", ");
+        HumanBeing.dance("некоторые", Position.RIGHT_HERE.toString());
+
 
         // ниже - старый код
 
@@ -101,7 +106,7 @@ public class Main {
         System.out.print(", ");
         neznaika.drink(cupOfCoffee);
         System.out.print(", ");
-        neznaika.eat(iceCream, "закусил ");
+        neznaika.eat(strawberryIceCream, "закусил ");
         System.out.println("");
         neznaika.evaluate(" понравилась", " еда");
 //        System.out.print(neznaika.getName() + " " + neznaika.getHungerState()); // заменил на один метод
