@@ -163,6 +163,9 @@ public class ShortiesContainer {
         return action;
     }
 
+    public static void bring(String recipient, String foodToBring) {
+        System.out.println("приносили " + recipient + " " + foodToBring);
+    }
 
     @Override
     public String toString() {
