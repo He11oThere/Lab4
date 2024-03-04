@@ -4,6 +4,7 @@ import additionalElements.Food;
 import additionalElements.Furniture;
 import enums.EmotionalCondition;
 import enums.Position;
+import exceptions.NotEnoughShorties;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -12,11 +13,11 @@ import java.util.Objects;
 
 public class ShortiesContainer {
     private List<Shorty> shortiesList;
-    private String whoIn;
+    private String containPersons;
     private String personsDescription;
 
-    public ShortiesContainer(String whoIn, String personsDescription) {
-        this.whoIn = whoIn;
+    public ShortiesContainer(String containPersons, String personsDescription) {
+        this.containPersons = containPersons;
         this.personsDescription = personsDescription;
         this.shortiesList = new ArrayList<>();
     }
@@ -29,12 +30,12 @@ public class ShortiesContainer {
         this.shortiesList = shortiesList;
     }
 
-    public String getWhoIn() {
-        return whoIn;
+    public String getContainPersons() {
+        return containPersons;
     }
 
-    public void setWhoIn(String whoIn) {
-        this.whoIn = whoIn;
+    public void setContainPersons(String whoIn) {
+        this.containPersons = containPersons;
     }
 
     public String getPersonsDescription() {
@@ -60,10 +61,10 @@ public class ShortiesContainer {
     public void allTalk(String activeSpeakers) {
         if (shortiesList.size() > 1) {
             Shorty someShorty = shortiesList.get(0);
-            shortiesList.get(0).talk(activeSpeakers, getWhoIn());
+            shortiesList.get(0).talk(activeSpeakers, getContainPersons());
 //            someShorty.talk(activeSpeakers);
         } else {
-            System.out.println("Недостаточно коротышек");
+            throw new NotEnoughShorties("Недостаточно коротышек");
         }
     }
 
@@ -72,7 +73,7 @@ public class ShortiesContainer {
             Shorty someShorty = shortiesList.get(0);
             someShorty.laugth();
         } else {
-            System.out.println("Недостаточно коротышек");
+            throw new NotEnoughShorties("Недостаточно коротышек");
         }
     }
 
@@ -81,7 +82,7 @@ public class ShortiesContainer {
 //            Shorty someShorty = shortiesList.get(0);
             shortiesList.get(0).appearanceDescription(true, getPersonsDescription());
         } else {
-            System.out.println("Недостаточно коротышек");
+            throw new NotEnoughShorties("Недостаточно коротышек");
         }
     }
 
@@ -90,7 +91,7 @@ public class ShortiesContainer {
             Shorty someShorty = shortiesList.get(0);
             someShorty.lookAt(person, emotion);
         } else {
-            System.out.println("Недостаточно коротышек");
+            throw new NotEnoughShorties("Недостаточно коротышек");
         }
     }
 
@@ -99,7 +100,7 @@ public class ShortiesContainer {
             Shorty someShorty = shortiesList.get(0);
             someShorty.lookAt(person);
         } else {
-            System.out.println("Недостаточно коротышек");
+            throw new NotEnoughShorties("Недостаточно коротышек");
         }
     }
 
@@ -108,16 +109,16 @@ public class ShortiesContainer {
             Shorty someShorty = shortiesList.get(0);
             someShorty.lookAt(object);
         } else {
-            System.out.println("Недостаточно коротышек");
+            throw new NotEnoughShorties("Недостаточно коротышек");
         }
     }
 
     public void allEat(Food food, String action) {
         if (shortiesList.size() > 1) {
             Shorty someShorty = shortiesList.get(0);
-            someShorty.eat(food, action, getWhoIn());
+            someShorty.eat(food, action, getContainPersons());
         } else {
-            System.out.println("Недостаточно коротышек");
+            throw new NotEnoughShorties("Недостаточно коротышек");
         }
     }
 
@@ -126,24 +127,24 @@ public class ShortiesContainer {
             Shorty someShorty = shortiesList.get(0);
             someShorty.sit(furniture);
         } else {
-            System.out.println("Недостаточно коротышек");
+            throw new NotEnoughShorties("Недостаточно коротышек");
         }
     } // сделать проверку на "многие"
 
     public void allCrawlUp(Object o) {
         if (shortiesList.size() > 1) {
-            System.out.print(getWhoIn() + " карабкались " + Position.UP + " по " + o);
+            System.out.print(getContainPersons() + " карабкались " + Position.UP + " по " + o);
         } else {
-            System.out.println("Недостаточно коротышек");
+            throw new NotEnoughShorties("Недостаточно коротышек");
         }
     }
 
     public void allDrink(Food... food) {
         if (shortiesList.size() > 1) {
             if (food.length == 1) {
-                System.out.print(getWhoIn() + " пили " + food[0]);
+                System.out.print(getContainPersons() + " пили " + food[0]);
             } else {
-                System.out.print(getWhoIn() + " пили ");
+                System.out.print(getContainPersons() + " пили ");
                 for (int x = 0; x < food.length; x++) {
                     System.out.print(food[x]);
                     if (x < food.length - 2) {
@@ -167,7 +168,7 @@ public class ShortiesContainer {
     public String toString() {
         return "ShortiesContainer{" +
                 "shortiesList=" + shortiesList +
-                ", whoIn='" + whoIn + '\'' +
+                ", whoIn='" + containPersons + '\'' +
                 ", personsDescription='" + personsDescription + '\'' +
                 '}';
     }
@@ -177,11 +178,11 @@ public class ShortiesContainer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShortiesContainer that = (ShortiesContainer) o;
-        return Objects.equals(shortiesList, that.shortiesList) && Objects.equals(whoIn, that.whoIn) && Objects.equals(personsDescription, that.personsDescription);
+        return Objects.equals(shortiesList, that.shortiesList) && Objects.equals(containPersons, that.containPersons) && Objects.equals(personsDescription, that.personsDescription);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shortiesList, whoIn, personsDescription);
+        return Objects.hash(shortiesList, containPersons, personsDescription);
     }
 }
