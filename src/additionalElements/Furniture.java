@@ -45,9 +45,7 @@ public class Furniture {
 
     @Override
     public String toString() {
-        return "Furniture{" +
-                "furniture='" + furniture + '\'' +
-                '}';
+        return getFurniture();
     }
 
     @Override
