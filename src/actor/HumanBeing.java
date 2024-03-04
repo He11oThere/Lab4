@@ -26,6 +26,10 @@ public abstract class HumanBeing implements Sittable, Eatable {
         this.name = possibleNames[randomIndex];
     }
 
+    public HumanBeing(String name) {
+        this.name = name;
+    }
+
     public HumanBeing(String name, String appearance) {
         this.name = name;
         this.appearance = appearance;
@@ -108,6 +112,10 @@ public abstract class HumanBeing implements Sittable, Eatable {
         System.out.print(getName() + " подумал");
     }
 
+    public String think(String emotion) {
+        return emotion + " подумал " + getName();
+    }
+
     public void remember() {
         System.out.print(getName() + " вспомнил, что ");
     }
@@ -167,12 +175,7 @@ public abstract class HumanBeing implements Sittable, Eatable {
 
     @Override
     public String toString() {
-        return "HumanBeing{" +
-                "name='" + name + '\'' +
-                ", appearance='" + appearance + '\'' +
-                ", emotion=" + emotion +
-                ", hungerState=" + hungerState +
-                '}';
+        return getName();
     }
 
     @Override

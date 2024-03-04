@@ -17,6 +17,10 @@ public class Actor extends HumanBeing {
     public Actor() {
     }
 
+    public Actor(String name) {
+        super(name);
+    }
+
     public Actor(String name, String appearance) {
         super(name, appearance);
     }
@@ -47,6 +51,47 @@ public class Actor extends HumanBeing {
 
     public void carry(String carryObject, Actor person) {
         System.out.print("носил " + person.getName() + carryObject);
+    }
+
+    public void monologue(String sentence, String descriptionOfThoughts) {
+        System.out.println("\"" + sentence + "\" - " + think(descriptionOfThoughts));
+    }
+
+    public void monologue(String sentence) {
+        System.out.println("\"" + sentence + "\"");
+    }
+
+    public void getUp() {
+        System.out.print(getName() + " поднялся");
+    }
+
+    public void wave(HumanBeing person) {
+        System.out.print(getName() + " помахал " + person.getName() + " на прощание");
+    }
+
+    public void seem(String... something) {
+        if (something.length == 0) {
+            System.out.print("стало казаться ему ");
+        }
+        if (something.length == 1) {
+            System.out.print("стало казаться ему " + something[0]);
+        } else if (something.length == 2) {
+            System.out.print("стало казаться ему " + something[0] + " или " + something[1]);
+        } else {
+            System.out.print("стало казаться ему ");
+            for (int x = 0; x < something.length; x++) {
+                System.out.print(something[x]);
+                if (x < something.length - 2) {
+                    System.out.print(", ");
+                } else if (x == something.length - 2) {
+                    System.out.print(" или ");
+                }
+            }
+        }
+    }
+
+    public void happend(String what, String when) {
+        System.out.print(what + ", что произошло с " + getName() + " " + when);
     }
 
     @Override
