@@ -14,7 +14,7 @@ public class Sound {
         public void roar(String where) {
             System.out.print(MUSIC + " гремела " + where);
         }
-    };
+    }; // АНОНИМНЫЙ КЛАСС ТУТ
 
     @Override
     public String toString() {
