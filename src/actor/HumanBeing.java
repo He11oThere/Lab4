@@ -4,8 +4,9 @@ import additionalElements.Food;
 import additionalElements.Furniture;
 import enums.EmotionalCondition;
 import enums.HungerState;
+import exceptions.EmotionValidationException;
+import exceptions.HungerStateValidationException;
 import interfaces.Eatable;
-import interfaces.Music;
 import interfaces.Sittable;
 
 import java.util.Objects;
@@ -35,10 +36,33 @@ public abstract class HumanBeing implements Sittable, Eatable {
         this.appearance = appearance;
     }
 
-    public HumanBeing(String name, EmotionalCondition emotion, HungerState hungerState) {
-        this.name = name;
-        this.emotion = emotion;
-        this.hungerState = hungerState;
+    private void validateEmotion(EmotionalCondition emotion) throws EmotionValidationException {
+        if (emotion == null) {
+            throw new EmotionValidationException("Эмоция не может быть null");
+        }
+    }
+
+    private void validateHungerState(HungerState hungerState) throws HungerStateValidationException {
+        if (hungerState == null) {
+            throw new HungerStateValidationException("Голод не может быть null");
+        }
+    }
+
+    public HumanBeing(String name, EmotionalCondition emotion, HungerState hungerState) throws EmotionValidationException, HungerStateValidationException {
+        try {
+            validateEmotion(emotion);
+            validateHungerState(hungerState);
+
+            this.name = name;
+            this.emotion = emotion;
+            this.hungerState = hungerState;
+        } catch (EmotionValidationException e) {
+            System.out.println(e.getMessage());
+            setEmotionalCondition(EmotionalCondition.CALM);
+        } catch (HungerStateValidationException e) {
+            System.out.println(e.getMessage());
+            setHungerState(HungerState.NEUTRAL);
+        }
     }
 
     public String getName() {
