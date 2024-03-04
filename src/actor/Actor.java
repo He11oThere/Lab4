@@ -5,6 +5,8 @@ import additionalElements.Furniture;
 import additionalElements.StreetObject;
 import enums.EmotionalCondition;
 import enums.HungerState;
+import exceptions.EmotionValidationException;
+import exceptions.HungerStateValidationException;
 import interfaces.Eatable;
 import interfaces.Sittable;
 import interfaces.Swingable;
@@ -25,7 +27,7 @@ public class Actor extends HumanBeing {
         super(name, appearance);
     }
 
-    public Actor(String name, EmotionalCondition emotion, HungerState hungerState) {
+    public Actor(String name, EmotionalCondition emotion, HungerState hungerState) throws EmotionValidationException, HungerStateValidationException {
         super(name, emotion, hungerState);
     }
 
