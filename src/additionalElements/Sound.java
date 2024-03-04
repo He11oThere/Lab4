@@ -1,6 +1,6 @@
 package additionalElements;
 
-import interfaces.Music;
+import interfaces.Musicable;
 
 public class Sound {
     private final String SOUND;
@@ -9,12 +9,18 @@ public class Sound {
         this.SOUND = SOUND;
     }
 
-    public static Music playing = new Music() {
-        @Override
-        public void roar(String where) {
-            System.out.print(MUSIC + " гремела " + where);
+    public class Music {
+        public void playing(String where) {
+            System.out.print(SOUND + " гремела " + where);
         }
-    }; // АНОНИМНЫЙ КЛАСС ТУТ
+    }
+
+//    public static Musicable playing = new Musicable() {
+//        @Override
+//        public void roar(String where) {
+//            System.out.print(MUSIC + " гремела " + where);
+//        }
+//    };
 
     @Override
     public String toString() {
