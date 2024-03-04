@@ -25,6 +25,9 @@ public class Main {
         Building dinnery = new Building("столовыми", true);
         Building caffes = new Building("кафе", true);
 
+        Shorty maleWaiters = new Shorty("Официанты");
+        Shorty femaleWaiters = new Shorty("официантки");
+
         Food tea = new Food("чай", 1);
         Food waterWithSyrup = new Food("газированная вода с сиропом", 1);
         Food iceCream = new Food("мороженное", 1);
@@ -42,16 +45,11 @@ public class Main {
         Rideable toRideOn = (StreetObject rideObj) -> "прокатиться на " + rideObj;
         Spinable toSpinAroundOn = (StreetObject spinObj, StreetObject spinObjExtra) -> "покружиться на " + spinObj + ", или хотя бы на " + spinObjExtra;
 
-
         shortiesContainer.allCrawlUp(stairs);
         System.out.print(", чтобы ");
-//        Swingable toSwingOn = (StreetObject swingObj) -> "покачаться на " + swingObj;
         System.out.print(toSwingOn.swingOn(swing) + ", ");
-//        Shakeable toShakeOn = (StreetObject shakeObj) -> "потрястись на " + shakeObj;
         System.out.println(toShakeOn.shakeOn(woodenHorses) + ",");
-//        Rideable toRideOn = (StreetObject rideObj) -> "прокатиться на " + rideObj;
         System.out.print(toRideOn.rideOn(specialBicycle) + ", ");
-//        Spinable toSpinAroundOn = (StreetObject spinObj, StreetObject spinObjExtra) -> "покружиться на " + spinObj + ", или хотя бы на " + spinObjExtra;
         System.out.println(toSpinAroundOn.spinAroundOn(carousels, wheel));
         mirrors.located(Position.DOWN);
         System.out.print(", и ");
@@ -63,7 +61,7 @@ public class Main {
         System.out.print(", ");
 //        System.out.print(Position.RIGHT_ON + " тротуаре, "); // добавил в метод как varargs
         tables.stood(Position.RIGHT_ON + " тротуаре");
-        System.out.print(shortiesContainer.getWhoIn());
+        System.out.print(shortiesContainer.getContainPersons());
         shortiesContainer.allSit(tables);
         System.out.print(" и ");
         shortiesContainer.allEat(dinner, " ели ");
@@ -74,18 +72,19 @@ public class Main {
         Sound.playing.roar("со всех сторон");
         System.out.print(", ");
         HumanBeing.dance("некоторые", Position.RIGHT_HERE.toString());
+        Shorty.run("между " + tables, maleWaiters, femaleWaiters);
+        System.out.print(" и "); Shorty.bring("желающим", "кушанья");
 
 
         // ниже - старый код
 
-        System.out.println("\n");
         neznaika.see(null);
         shortiesContainer.allEat(dinner, " ели ");
-        System.out.println("");
+        System.out.println();
         neznaika.remember();
         System.out.print(TimePoint.LONG_AGO.getPoint());
         neznaika.hungerLevel(HungerState.HUNGRY);
-        System.out.println("");
+        System.out.println();
 
         neznaika.think();
         System.out.print(" и ");
@@ -107,7 +106,7 @@ public class Main {
         neznaika.drink(cupOfCoffee);
         System.out.print(", ");
         neznaika.eat(strawberryIceCream, "закусил ");
-        System.out.println("");
+        System.out.println();
         neznaika.evaluate(" понравилась", " еда");
 //        System.out.print(neznaika.getName() + " " + neznaika.getHungerState()); // заменил на один метод
         neznaika.printHungerState();
@@ -116,7 +115,7 @@ public class Main {
         neznaika.emotion(EmotionalCondition.HAPPY);
         System.out.print(" и ");
         neznaika.emotion(EmotionalCondition.KIND);
-        System.out.println("");
+        System.out.println();
         neznaika.emotion(EmotionalCondition.HAPPY);
         System.out.print(", поэтому ");
         neznaika.want();
@@ -128,10 +127,10 @@ public class Main {
         System.out.print(" и ");
         neznaika.lookAt("танцующих");
         System.out.print(", и ");
-        neznaika.lookAt(shortiesContainer.getWhoIn());
+        neznaika.lookAt(shortiesContainer.getContainPersons());
         System.out.print(", которые");
         shortiesContainer.allSit(table);
-        System.out.println("");
+        System.out.println();
         shortiesContainer.allTalk("между собой");
         System.out.print(" и");
         shortiesContainer.allLaugth();
@@ -143,5 +142,22 @@ public class Main {
         System.out.print(", который ");
         waiter.carry(" еду ", neznaika);
         waiter.glanceAt(neznaika, EmotionalCondition.FRIENDLY);
+        waiter.setName("официанту");
+
+        // выше - старый код
+
+        neznaika.monologue("Что ж, здесь вполне хорошо!", "благодушно");
+        neznaika.monologue("Видно, и на Луне живут добрые коротышки!");
+
+        neznaika.happend("Всё", TimePoint.BEFORE.getPoint());
+        System.out.print(", ");
+        neznaika.seem("недоразумением", "нелепым сном");
+        System.out.print(", о котором ");
+        neznaika.toDo("не стоит и вспоминать");
+
+        neznaika.getUp();
+        System.out.print(" и ");
+        neznaika.wave(waiter);
+
     }
 }
