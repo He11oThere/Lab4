@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface Music {
+public interface Musicable {
     String MUSIC = "Музыка";
 
     default void roar(String where) {
