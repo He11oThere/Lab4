@@ -2,9 +2,9 @@ package actor;
 
 import additionalElements.Food;
 import additionalElements.Furniture;
+import additionalElements.StreetObject;
 import enums.EmotionalCondition;
-import interfaces.Eatable;
-import interfaces.Sittable;
+import interfaces.*;
 
 public class Shorty extends Actor implements Eatable, Sittable {
 
@@ -94,9 +94,33 @@ public class Shorty extends Actor implements Eatable, Sittable {
         }
     }
 
-    public static void bring(String recipient, String foodToBring) {
-        System.out.println("приносили " + recipient + " " + foodToBring);
-    }
+    public static Swingable swingable = new Swingable() {
+        @Override
+        public String swingOn(StreetObject swingObject) {
+            return "покачаться на " + swingObject;
+        }
+    };
+
+    public static Shakeable shakeable = new Shakeable() {
+        @Override
+        public String shakeOn(StreetObject shakeObject) {
+            return "потрястись на " + shakeObject;
+        }
+    };
+
+    public static Rideable rideable = new Rideable() {
+        @Override
+        public String rideOn(StreetObject rideObj) {
+            return "прокатиться на " + rideObj;
+        }
+    };
+
+    public static Spinable spineable = new Spinable() {
+        @Override
+        public String spinAroundOn(StreetObject spinObj, StreetObject spinObjExtra) {
+            return "покружиться на " + spinObj + " или " + spinObjExtra;
+        }
+    };
 
 //    public void crawl(Object o) {
 //        System.out.println(getName() + " карабкались по " + o);
