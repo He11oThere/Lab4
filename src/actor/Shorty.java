@@ -11,6 +11,10 @@ public class Shorty extends Actor implements Eatable, Sittable {
     public Shorty() {
     }
 
+    public Shorty(String name) {
+        super(name);
+    }
+
     public Shorty(String name, String appearance) {
         super(name, appearance);
     }
@@ -58,7 +62,7 @@ public class Shorty extends Actor implements Eatable, Sittable {
 //    }
 
     public void glanceAt(Actor person, EmotionalCondition emotion) {
-        System.out.print(emotion + " поглядывал на " + person.getName());
+        System.out.println(emotion + " поглядывал на " + person.getName());
     }
 
     public void lookAt(Actor person) {
@@ -67,6 +71,31 @@ public class Shorty extends Actor implements Eatable, Sittable {
 
     public void lookAt(Actor person, EmotionalCondition emotion) {
         System.out.print(emotion + " поглядывали на " + person.getName());
+    }
+
+    public static void run(String where, Shorty... who) {
+        if (who.length == 0) {
+            System.out.print("бегал с подносами " + where);
+        }
+        if (who.length == 1) {
+            System.out.print(who[0] + " бегал с подносами " + where);
+        } else if (who.length == 2) {
+            System.out.print(who[0] + " и " + who[1] + " бегали с подносами " + where);
+        } else {
+            for (int x = 0; x < who.length; x++) {
+                System.out.print(who[x]);
+                if (x < who.length - 2) {
+                    System.out.print(", ");
+                } else if (x == who.length - 2) {
+                    System.out.print(" и ");
+                }
+            }
+            System.out.print(" бегали с подносами " + where);
+        }
+    }
+
+    public static void bring(String recipient, String foodToBring) {
+        System.out.println("приносили " + recipient + " " + foodToBring);
     }
 
 //    public void crawl(Object o) {
