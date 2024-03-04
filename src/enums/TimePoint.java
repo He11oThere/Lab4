@@ -4,8 +4,8 @@ public enum TimePoint {
     LONG_AGO("давно "),
     RIGHT_NOW("Cейчас же "),
     AFTER("после чего"),
+    BEFORE("до этого"),
     THEN("Потом ");
-
     private String point;
 
     TimePoint(String point) {
